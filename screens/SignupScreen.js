@@ -12,8 +12,10 @@ function SignupScreen() {
 		try {
 			await createUser(email, password);
 		} catch (error) {
-			console.error('Error storing expense:', error);
-			throw new Error('Failed to store expense data');
+			Alert.alert(
+				'Sign up failed',
+				"Couldn'\t create new user. Please try again later!"
+			);
 		}
 		setIsAuthenticating(false);
 	}
