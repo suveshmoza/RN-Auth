@@ -8,21 +8,14 @@ async function authenticate(mode, email, password) {
 		password,
 		returnSecureToken: true,
 	});
-	console.log(response.data);
+	const token = response.data.idToken;
+	return token;
 }
 
-export async function createUser(email, password) {
-	try {
-		await authenticate('signup', email, password);
-	} catch (error) {
-		console.error('Error creating new user:', error);
-	}
+export function createUser(email, password) {
+	return authenticate('signup', email, password);
 }
 
-export async function loginUser(email, password) {
-	try {
-		await authenticate('signInWithPassword', email, password);
-	} catch (error) {
-		console.log('Error while logging in', err);
-	}
+export function loginUser(email, password) {
+	return authenticate('signInWithPassword', email, password);
 }
